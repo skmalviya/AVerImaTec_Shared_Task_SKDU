@@ -32,9 +32,9 @@ TEXT_QUES_PROMPT+="Question: %s. Document: %s. "
 TEXT_QUES_PROMPT+="If the question is not answerable according to the provided document, please answer as: No answer can be found. Start you answer as: **ANSWER:** "
 
 from transformers import AutoProcessor, CLIPModel
-clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32").cuda()
+clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
 clip_model.eval()
-clip_processor = AutoProcessor.from_pretrained("openai/clip-vit-base-patch32")
+clip_processor = AutoProcessor.from_pretrained("openai/clip-vit-base-patch32", use_fast=True)
 
 def load_pkl(path):
     data=pkl.load(open(path,'rb'))

@@ -44,6 +44,9 @@ if __name__ == '__main__':
     parser.add_argument('--save_num', 
                         type=str,
                         default="4")
+    parser.add_argument('--test_mode',
+                        type=str,
+                        default='val')
     parser.add_argument('--debug', 
                         type=bool,
                         default=False)
@@ -65,7 +68,7 @@ if __name__ == '__main__':
     }
 
     print ('Root dir:',args.root_dir)
-    p2_data=load_json(os.path.join(args.root_dir,'data/data_clean/split_data/test.json'))
+    p2_data=load_json(os.path.join(args.root_dir,'data/data_clean/split_data/'+args.TEST_MODE+'.json'))
     if len(args.pred_file_path)>0:
         pred_file=load_json(pred_file_path)
     else:
